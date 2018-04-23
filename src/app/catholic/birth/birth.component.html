@@ -1,0 +1,228 @@
+
+
+  <form novalidate [formGroup]="mainForm" class="birth-form">
+    <fieldset formGroupName="entry" class="entry-set">
+      <legend>Add new birth record</legend>
+      
+      <div class="gender-date-place">
+          <fieldset formGroupName="church" class="church-set">
+            <legend>Church</legend>
+            <ng-select [items]= "churchsTitles"
+                         [addTag]="true"
+                         placeholder="Church title"
+                         multiple=true
+                         maxSelectedItems="1"
+                         formControlName="title"></ng-select>
+                         <br>
+              <ng-select [items]= "churchsPrists"
+                         [addTag]="true"
+                         placeholder="Prist name"
+                         multiple=true
+                         maxSelectedItems="1"
+                         formControlName="prist"></ng-select>
+          </fieldset>
+
+          <fieldset class="gender-set" id="gender">
+              <legend>Gender</legend>
+              <input type="radio" name="gender" value="male"  formControlName="gender"> Male
+              <input type="radio" name="gender" value="female" formControlName="gender"> Female
+          </fieldset>
+
+            <fieldset formGroupName="birth" class="birth-set">
+              <legend>Date of Birth</legend>
+              <span>Selected: {{mainForm.value.entry.birth.date.formatted}}</span>
+              <div class="dp-container">
+                <my-date-picker name="date"
+                                [options]="datePickerOptions"
+                                [(ngModel)]="dayOfBirth"
+                                formControlName="date">
+                </my-date-picker>
+              </div>
+            </fieldset>
+
+            <fieldset formGroupName="baptism" class="baptism-set">
+              <legend>Date of Baptism</legend>
+              <span>Selected: {{mainForm.value.entry.baptism.date.formatted}}</span>
+              <div class="dp-container">
+                <my-date-picker name="date"
+                                [options]="datePickerOptions"
+                                [(ngModel)]="dayOfBaptism"
+                                formControlName="date">
+                </my-date-picker>
+              </div>  
+            </fieldset>
+      
+            <fieldset formGroupName="place" class="place-set">
+              <legend>Place</legend>
+              <ng-select [items]= "placesTypes"
+                         [addTag]="true"
+                         placeholder="Place's type"
+                         multiple=true
+                         maxSelectedItems="1"
+                         formControlName="type"></ng-select>
+                         <br>
+              <ng-select [items]= "placesNames"
+                         [addTag]="true"
+                         placeholder="Place's name"
+                         multiple=true
+                         maxSelectedItems="1"
+                         formControlName="name"></ng-select>
+            </fieldset>
+      </div>
+      
+      <div class="child-parents">
+          <fieldset formGroupName="child" class="child-set">
+              <legend>Child</legend>
+              <ng-select [items]="mainForm.value.entry.gender === 'female' ? femaleFirstNames : maleFirstNames"
+                         [addTag]="true"
+                         placeholder="First name"
+                         multiple="true"
+                         maxSelectedItems="1"
+                         formControlName="firstName"></ng-select>
+              <ng-select [items]="mainForm.value.entry.gender === 'female' ? femaleFirstNames : maleFirstNames"
+                         [addTag]="true"
+                         placeholder="Second name"
+                         multiple="true"
+                         maxSelectedItems="1"
+                         formControlName="secondName"></ng-select>
+              <ng-select [items]="mainForm.value.entry.gender === 'female' ? femaleLastNames : maleLastNames"
+                         [addTag]="true"
+                         placeholder="Last name"
+                         multiple="true"
+                         maxSelectedItems="1"
+                         formControlName="lastName"></ng-select>
+              <input type="checkbox" formControlName="illegitimate"> Is illegitimate
+              <br>
+              <input type="checkbox" formControlName="twins"> Is twins
+            </fieldset>
+      
+            <fieldset formGroupName="daddy" class="daddy-set">
+              <legend>Father</legend>
+              <ng-select [items]="maleFirstNames"
+                         [addTag]="true"
+                         placeholder="First name"
+                         multiple="true"
+                         maxSelectedItems="1"
+                         formControlName="firstName"></ng-select>
+              <ng-select [items]="maleMiddleNames"
+                         [addTag]="true"
+                         placeholder="Middle name"
+                         multiple="true"
+                         maxSelectedItems="1"
+                         formControlName="middleName"></ng-select>
+              <ng-select [items]="maleLastNames"
+                         [addTag]="true"
+                         placeholder="Last name"
+                         multiple="true"
+                         maxSelectedItems="1"
+                         formControlName="lastName"></ng-select>
+              <ng-select [items]="classOfMale"
+                         [addTag]="true"
+                         placeholder="Class of daddy"
+                         multiple="true"
+                         maxSelectedItems="1"
+                         formControlName="class"></ng-select>
+              <input type="text" class="ext-input" placeholder="Additional info" formControlName="ext">
+            </fieldset>
+      
+            <fieldset formGroupName="mommy" class="mommy-set">
+              <legend>Mother</legend>
+              <ng-select [items]="femaleFirstNames"
+                         [addTag]="true"
+                         placeholder="First name"
+                         multiple="true"
+                         maxSelectedItems="1"
+                         formControlName="firstName"></ng-select>
+              <ng-select [items]="femaleMiddleNames"
+                         [addTag]="true"
+                         placeholder="Middle name"
+                         multiple="true"
+                         maxSelectedItems="1"
+                         formControlName="middleName"></ng-select>
+              <ng-select [items]="femaleLastNames"
+                         [addTag]="true"
+                         placeholder="Last name"
+                         multiple="true"
+                         maxSelectedItems="1"
+                         formControlName="lastName"></ng-select>
+              <ng-select [items]="classOfFemale"
+                         [addTag]="true"
+                         placeholder="Class of mommy"
+                         multiple="true"
+                         maxSelectedItems="1"
+                         formControlName="class"></ng-select>  
+              <input type="checkbox" formControlName="soldierWife"> Is soldier's wife
+              <br>
+              <input type="checkbox" formControlName="widow"> Is widow
+              <br>
+              <input type="checkbox" formControlName="maiden"> Is maiden
+            </fieldset>      
+      </div>
+      
+      <div class="godparents">
+          <fieldset formGroupName="godfather" class="godfather-set">
+              <legend>Godfather</legend>
+              <ng-select [items]="maleFirstNames"
+                          [addTag]="true"
+                          placeholder="First name"
+                          multiple="true"
+                          maxSelectedItems="1"
+                          formControlName="firstName"></ng-select>
+              <ng-select [items]="maleMiddleNames"
+                          [addTag]="true"
+                          placeholder="Middle name"
+                          multiple="true"
+                          maxSelectedItems="1"
+                          formControlName="middleName"></ng-select>
+              <ng-select [items]="maleLastNames"
+                          [addTag]="true"
+                          placeholder="Last name"
+                          multiple="true"
+                          maxSelectedItems="1"
+                          formControlName="lastName"></ng-select>
+              <ng-select [items]="classOfMale"
+                          [addTag]="true"
+                          placeholder="Class of father"
+                          multiple="true"
+                          maxSelectedItems="1"
+                          formControlName="class"></ng-select>
+              <input type="text" class="ext-input" placeholder="Additional info" formControlName="ext">
+            </fieldset>
+      
+            <fieldset formGroupName="godmother" class="godmother-set">
+              <legend>Godmother</legend>
+              <ng-select [items]="femaleFirstNames"
+                         [addTag]="true"
+                         placeholder="First name"
+                         multiple="true"
+                         maxSelectedItems="1"
+                         formControlName="firstName"></ng-select>
+              <ng-select [items]="femaleLastNames"
+                         [addTag]="true"
+                         placeholder="Last name"
+                         multiple="true"
+                         maxSelectedItems="1"
+                         formControlName="lastName"></ng-select>
+              <ng-select [items]="maleFirstNames"
+                         [addTag]="true"
+                         placeholder="Husband name"
+                         multiple="true"
+                         maxSelectedItems="1"
+                         formControlName="husbandName"></ng-select>
+              <ng-select [items]="classOfFemale"
+                         [addTag]="true"
+                         placeholder="Class of godmother"
+                         multiple="true"
+                         maxSelectedItems="1"
+                         formControlName="class"></ng-select>
+            </fieldset>
+      </div>
+      
+    </fieldset>
+
+    <fieldset formGroupName="cache" class="cache-set">
+      <p>Just text from here</p>
+    </fieldset>
+  </form>
+
+<pre>{{mainForm.value | json}}</pre>
