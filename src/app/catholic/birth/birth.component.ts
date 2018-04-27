@@ -13,7 +13,9 @@ export class BirthComponent implements OnInit {
     dateFormat: 'dd.mm.yyyy',
     showTodayBtn: false,
     firstDayOfWeek: 'mo',
-    inline: true
+    inline: true,
+    selectorHeight: '200px',
+    selectorWidth: '210px'
   };
 
   public dayOfBaptism: any = { 
