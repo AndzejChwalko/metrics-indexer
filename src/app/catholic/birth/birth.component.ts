@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 import {IMyDpOptions} from 'mydatepicker';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-birth',
@@ -52,8 +53,11 @@ export class BirthComponent implements OnInit {
   classOfFemale: String[] = [];
 
   public mainForm: FormGroup; 
+  public currentLocale: string;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private translate: TranslateService) { 
+    this.currentLocale = this.translate.currentLang;
+  }
 
   ngOnInit() {
     this.initForm();

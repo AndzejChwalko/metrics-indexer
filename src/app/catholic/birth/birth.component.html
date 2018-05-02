@@ -2,68 +2,71 @@
 
   <form novalidate [formGroup]="mainForm" class="birth-form">
     <fieldset formGroupName="entry" class="entry-set">
-      <legend>Add new birth record</legend>
+      <legend>{{'add.catholic.birth.record' | translate}}</legend>
       
       <div class="gender-date-place">
           <fieldset formGroupName="church" class="church-set">
-            <legend>Church</legend>
+            <legend>{{'add.catholic.birth.church' | translate}}</legend> 
             <ng-select [items]= "churchsTitles"
-                         [addTag]="true"
-                         placeholder="Church title"
-                         multiple=true
-                         maxSelectedItems="1"
-                         formControlName="title"></ng-select>
-                         <br>
-              <ng-select [items]= "churchsPrists"
-                         [addTag]="true"
-                         placeholder="Prist name"
-                         multiple=true
-                         maxSelectedItems="1"
-                         formControlName="prist"></ng-select>
+                       [addTag]="true"
+                       placeholder="{{'add.catholic.birth.church.title' | translate}}"
+                       multiple=true
+                       maxSelectedItems="1"
+                       formControlName="title"></ng-select>
+                       <br>
+            <ng-select [items]= "churchsPrists"
+                       [addTag]="true"
+                       placeholder="{{'add.catholic.birth.church.prist.name' | translate}}"
+                       multiple=true
+                       maxSelectedItems="1"
+                       formControlName="prist"></ng-select>
           </fieldset>
 
           <fieldset class="gender-set" id="gender">
-              <legend>Gender</legend>
-              <input type="radio" name="gender" value="male"  formControlName="gender"> Male
-              <input type="radio" name="gender" value="female" formControlName="gender"> Female
+              <legend>{{'add.catholic.birth.gender' | translate}}</legend>
+              <input type="radio" name="gender" value="male"  formControlName="gender"> {{'add.catholic.birth.gender.male' | translate}}
+              <br>
+              <input type="radio" name="gender" value="female" formControlName="gender"> {{'add.catholic.birth.gender.female' | translate}}
           </fieldset>
 
             <fieldset formGroupName="birth" class="birth-set">
-              <legend>Date of Birth</legend>
-              <span>Selected: {{mainForm.value.entry.birth.date.formatted}}</span>
+              <legend>{{'add.catholic.birth.day.birth' | translate}}</legend>
+              <span>{{'add.catholic.birth.selected' | translate}} {{mainForm.value.entry.birth.date.formatted}}</span>
               <div class="dp-container">
                 <my-date-picker name="date"
                                 [options]="datePickerOptions"
                                 [(ngModel)]="dayOfBirth"
-                                formControlName="date">
+                                formControlName="date"
+                                locale="en">
                 </my-date-picker>
               </div>
             </fieldset>
 
             <fieldset formGroupName="baptism" class="baptism-set">
-              <legend>Date of Baptism</legend>
-              <span>Selected: {{mainForm.value.entry.baptism.date.formatted}}</span>
+              <legend>{{'add.catholic.birth.day.baptism' | translate}}</legend>
+              <span>{{'add.catholic.birth.selected' | translate}} {{mainForm.value.entry.baptism.date.formatted}}</span>
               <div class="dp-container">
                 <my-date-picker name="date"
                                 [options]="datePickerOptions"
                                 [(ngModel)]="dayOfBaptism"
-                                formControlName="date">
+                                formControlName="date"
+                                locale="en">
                 </my-date-picker>
               </div>  
             </fieldset>
       
             <fieldset formGroupName="place" class="place-set">
-              <legend>Place</legend>
+              <legend>{{'add.catholic.birth.place' | translate}}</legend>
               <ng-select [items]= "placesTypes"
                          [addTag]="true"
-                         placeholder="Place's type"
+                         placeholder="{{'add.catholic.birth.place.type' | translate}}"
                          multiple=true
                          maxSelectedItems="1"
                          formControlName="type"></ng-select>
                          <br>
               <ng-select [items]= "placesNames"
                          [addTag]="true"
-                         placeholder="Place's name"
+                         placeholder="{{'add.catholic.birth.place.name' | translate}}"
                          multiple=true
                          maxSelectedItems="1"
                          formControlName="name"></ng-select>
@@ -72,47 +75,47 @@
       
       <div class="child-parents">
           <fieldset formGroupName="child" class="child-set">
-              <legend>Child</legend>
+              <legend>{{'add.catholic.birth.child' | translate}}</legend>
               <ng-select [items]="mainForm.value.entry.gender === 'female' ? femaleFirstNames : maleFirstNames"
                          [addTag]="true"
-                         placeholder="First name"
+                         placeholder="{{'add.catholic.birth.name.first' | translate}}"
                          multiple="true"
                          maxSelectedItems="1"
                          formControlName="firstName"></ng-select>
               <ng-select [items]="mainForm.value.entry.gender === 'female' ? femaleFirstNames : maleFirstNames"
                          [addTag]="true"
-                         placeholder="Second name"
+                         placeholder="{{'add.catholic.birth.name.second' | translate}}"
                          multiple="true"
                          maxSelectedItems="1"
                          formControlName="secondName"></ng-select>
               <ng-select [items]="mainForm.value.entry.gender === 'female' ? femaleLastNames : maleLastNames"
                          [addTag]="true"
-                         placeholder="Last name"
+                         placeholder="{{'add.catholic.birth.name.last' | translate}}"
                          multiple="true"
                          maxSelectedItems="1"
                          formControlName="lastName"></ng-select>
-              <input type="checkbox" formControlName="illegitimate"> Is illegitimate
+              <input type="checkbox" formControlName="illegitimate"> {{'add.catholic.birth.child.illegitimate' | translate}} 
               <br>
-              <input type="checkbox" formControlName="twins"> Is twins
+              <input type="checkbox" formControlName="twins"> {{'add.catholic.birth.child.twin' | translate}}
             </fieldset>
       
             <fieldset formGroupName="daddy" class="daddy-set">
-              <legend>Father</legend>
+              <legend> {{'add.catholic.birth.father' | translate}} </legend>
               <ng-select [items]="maleFirstNames"
                          [addTag]="true"
-                         placeholder="First name"
+                         placeholder="{{'add.catholic.birth.name.first' | translate}}"
                          multiple="true"
                          maxSelectedItems="1"
                          formControlName="firstName"></ng-select>
               <ng-select [items]="maleMiddleNames"
                          [addTag]="true"
-                         placeholder="Middle name"
+                         placeholder="{{'add.catholic.birth.name.middle' | translate}}"
                          multiple="true"
                          maxSelectedItems="1"
                          formControlName="middleName"></ng-select>
               <ng-select [items]="maleLastNames"
                          [addTag]="true"
-                         placeholder="Last name"
+                         placeholder="{{'add.catholic.birth.name.last' | translate}}"
                          multiple="true"
                          maxSelectedItems="1"
                          formControlName="lastName"></ng-select>
@@ -126,22 +129,22 @@
             </fieldset>
       
             <fieldset formGroupName="mommy" class="mommy-set">
-              <legend>Mother</legend>
+              <legend> {{'add.catholic.birth.mother' | translate}} </legend>
               <ng-select [items]="femaleFirstNames"
                          [addTag]="true"
-                         placeholder="First name"
+                         placeholder="{{'add.catholic.birth.name.first' | translate}}"
                          multiple="true"
                          maxSelectedItems="1"
                          formControlName="firstName"></ng-select>
               <ng-select [items]="femaleMiddleNames"
                          [addTag]="true"
-                         placeholder="Middle name"
+                         placeholder="{{'add.catholic.birth.name.middle' | translate}}"
                          multiple="true"
                          maxSelectedItems="1"
                          formControlName="middleName"></ng-select>
               <ng-select [items]="femaleLastNames"
                          [addTag]="true"
-                         placeholder="Last name"
+                         placeholder="{{'add.catholic.birth.name.last' | translate}}"
                          multiple="true"
                          maxSelectedItems="1"
                          formControlName="lastName"></ng-select>
@@ -161,22 +164,22 @@
       
       <div class="godparents">
           <fieldset formGroupName="godfather" class="godfather-set">
-              <legend>Godfather</legend>
+              <legend> {{'add.catholic.birth.godfather' | translate}} </legend>
               <ng-select [items]="maleFirstNames"
                           [addTag]="true"
-                          placeholder="First name"
+                          placeholder="{{'add.catholic.birth.name.first' | translate}}"
                           multiple="true"
                           maxSelectedItems="1"
                           formControlName="firstName"></ng-select>
               <ng-select [items]="maleMiddleNames"
                           [addTag]="true"
-                          placeholder="Middle name"
+                          placeholder="{{'add.catholic.birth.name.middle' | translate}}"
                           multiple="true"
                           maxSelectedItems="1"
                           formControlName="middleName"></ng-select>
               <ng-select [items]="maleLastNames"
                           [addTag]="true"
-                          placeholder="Last name"
+                          placeholder="{{'add.catholic.birth.name.last' | translate}}"
                           multiple="true"
                           maxSelectedItems="1"
                           formControlName="lastName"></ng-select>
@@ -190,22 +193,22 @@
             </fieldset>
       
             <fieldset formGroupName="godmother" class="godmother-set">
-              <legend>Godmother</legend>
+              <legend> {{'add.catholic.birth.godmother' | translate}} </legend>
               <ng-select [items]="femaleFirstNames"
                          [addTag]="true"
-                         placeholder="First name"
+                         placeholder="{{'add.catholic.birth.name.first' | translate}}"
                          multiple="true"
                          maxSelectedItems="1"
                          formControlName="firstName"></ng-select>
               <ng-select [items]="femaleLastNames"
                          [addTag]="true"
-                         placeholder="Last name"
+                         placeholder="{{'add.catholic.birth.name.last' | translate}}"
                          multiple="true"
                          maxSelectedItems="1"
                          formControlName="lastName"></ng-select>
               <ng-select [items]="maleFirstNames"
                          [addTag]="true"
-                         placeholder="Husband name"
+                         placeholder="{{'add.catholic.birth.name.husband' | translate}}"
                          multiple="true"
                          maxSelectedItems="1"
                          formControlName="husbandName"></ng-select>

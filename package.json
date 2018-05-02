@@ -8,7 +8,8 @@
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "i18n:update": "ngx-translate-extract -i ./src -o ./src/assets/i18n/{en,ru,be}.json --clean --format namespaced-json"
   },
   "private": true,
   "dependencies": {
@@ -22,6 +23,8 @@
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
     "@ng-select/ng-select": "^1.1.0",
+    "@ngx-translate/core": "^9.1.1",
+    "@ngx-translate/http-loader": "^3.0.1",
     "core-js": "^2.4.1",
     "font-awesome": "^4.7.0",
     "mydatepicker": "^2.6.3",

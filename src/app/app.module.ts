@@ -15,6 +15,11 @@ import { MyDatePickerModule } from 'mydatepicker';
 /* cuppa-ng2-slidemenu */
 import { SlideMenuModule } from 'cuppa-ng2-slidemenu/cuppa-ng2-slidemenu';
 
+/* I18n */
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+
 /* Own components */
 import { AppComponent } from './app.component';
 import { BirthComponent } from './catholic/birth/birth.component';
@@ -24,6 +29,9 @@ import { HomeComponent } from './home/home.component';
 import { TextInputComponent } from './forms/text-input/text-input.component';
 import { HeaderComponent } from './commons/header/header.component';
 
+export const createTranslateLoader = (http: HttpClient) => {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -43,7 +51,15 @@ import { HeaderComponent } from './commons/header/header.component';
     FormsModule,
     NgSelectModule,
     MyDatePickerModule,
-    SlideMenuModule
+    SlideMenuModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateLoader,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

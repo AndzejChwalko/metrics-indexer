@@ -1,6 +1,22 @@
-<cuppa-slidemenu [menulist]="menuItems"
-                 (open)="onMenuOpen()"
-                 (close)="onMenuClose"
-                 (onItemSelect)="onItemSelect($event)"
-                 [config]="menuConfig">
-</cuppa-slidemenu>
+<div class="header-wrapper">
+  <div class="logo-box">
+    <cuppa-slidemenu [menulist]="menuItems"
+                     (open)="onMenuOpen()"
+                     (close)="onMenuClose()"
+                     (onItemSelect)="onItemSelect($event)"
+                     [config]="menuConfig"
+                     class="logo-menu">
+    </cuppa-slidemenu>
+  
+    <h3 class="logo-text">Geneology documents indexer</h3>
+  </div>
+
+  <div class="i18n-switch">
+    <input type="button" name="eng" value="ENG" class="i18n-button" (click)="switchLanguage('en')">
+    <input type="button" name="rus" value="RUS" class="i18n-button" (click)="switchLanguage('ru')">
+    <input type="button" name="bel" value="BEL" class ="i18n-button" (click)="switchLanguage('be')">
+  </div>
+</div>
+
+
+

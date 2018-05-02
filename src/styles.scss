@@ -4,6 +4,21 @@
 $fa-font-path: "../node_modules/font-awesome/fonts";
 @import '~font-awesome/scss/font-awesome.scss';
 
+body {
+    margin: 0px;
+    padding: 0px;
+
+}
+
+.untouched {
+    color: #555 !important;
+    pointer-events: none;
+}
+
+.cuppa-menu-overlay {
+    background: rgba(108, 41, 86, 0.7); 
+}
+
 .ng-select.custom .ng-select-container{
     color:green;
 }

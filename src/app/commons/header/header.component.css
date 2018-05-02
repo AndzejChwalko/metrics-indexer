@@ -1,0 +1,49 @@
+.logo-box {
+    width: 100%;
+    display: inline-block;
+    margin-left: 2em;
+    
+}
+
+.logo-menu {
+    vertical-align: middle;
+}
+
+.logo-text {
+    display: inline-block;
+    vertical-align: super;
+    color:#555;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.header-wrapper {
+    width: 100%;
+    background-color: rgb(186, 209, 252);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    display: inline-flex;
+}
+
+.i18n-switch {
+    width: 100%;
+    margin: .75em;
+    text-align: right;
+}
+
+.i18n-button {
+    color: #777;
+    background-color: rgb(186, 209, 252);
+    border: 1px solid #999;
+    border-radius: 3px;
+    padding: .5em;
+    font-weight: bolder;
+}
+.i18n-button:hover {    
+    border-color: #aaa;
+    background-color: rgb(206, 220, 247);
+}
+
+.i18n-button.current {
+    background-color: rgb(104, 238, 115);
+}
+

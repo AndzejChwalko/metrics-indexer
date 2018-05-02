@@ -87,6 +87,7 @@ ng-select {
     grid-template-columns: 2fr 1fr;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.2);
     color: brown;
+    margin: 1em;
 }
 
 .birth-form > * {
