@@ -5,8 +5,8 @@
     "add.catholic.birth.name.second": "Второе имя",
     "add.catholic.birth.name.husband": "Имя мужа",
     "add.catholic.birth.record": "Добавление новой записи о рождении",
-    "add.catholic.birth.church" : "Церковь",
-    "add.catholic.birth.church.title" : "Название церкви",
+    "add.catholic.birth.church" : "Костёл",
+    "add.catholic.birth.church.title" : "Название костёла",
     "add.catholic.birth.church.prist.name" : "Имя настоятеля",
     "add.catholic.birth.gender" : "Пол",
     "add.catholic.birth.gender.male" : "Мужской",
@@ -21,7 +21,24 @@
     "add.catholic.birth.child.illegitimate" : "Незаконнорожденный",
     "add.catholic.birth.child.twin" : "Близнец",
     "add.catholic.birth.father" : "Отец",
+    "add.catholic.birth.father.class" : "Сословие отца",
+    "add.catholic.birth.father.ext" : "Дополнительная информация",
     "add.catholic.birth.mother" : "Мать",
+    "add.catholic.birth.mother.class" : "Сословие матери",
+    "add.catholic.birth.mother.soldiers" : "Рекрутка",
+    "add.catholic.birth.mother.widow" : "Вдова",
+    "add.catholic.birth.mother.maiden" : "Девка",
     "add.catholic.birth.godfather" : "Крёстный отец",
-    "add.catholic.birth.godmother" : "Крёстная мать"
+    "add.catholic.birth.godfather.class" : "Сословие крёстного",
+    "add.catholic.birth.godfather.ext" : "Дополнительная информация",
+    "add.catholic.birth.godmother" : "Крёстная мать",
+    "add.catholic.birth.godmother.class" : "Сословие крёстной",
+
+
+
+    "menu.slide.catholic" : "Католические метрики",
+    "menu.slide.orthodox" : "Православные метрики",
+    "menu.slide.of.birht" : "О родившихся",
+    "menu.slide.of.marriage" : "О бракосочетавшихся",
+    "menu.slide.of.death" : "Об умерших"
 }

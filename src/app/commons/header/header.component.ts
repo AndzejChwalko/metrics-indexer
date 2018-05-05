@@ -1,14 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router'; 
-import { TranslateService } from '@ngx-translate/core';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
   selector: 'my-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
 
   private menuConfig: any = {
     animation: "collapse",
@@ -18,20 +18,16 @@ export class HeaderComponent implements OnInit {
     closeOnCLick: true
   };
 
-  private menuItems: any[] = [
+  private menuItems: any[];
+
+  private menuEng: any[] = [
     {
-      "title": "Catholic",
+      "title": "Catholic metrics",
       "link" : "#",
       "subItems" : [
         {
           "title": "Birth",
           "link" : "/catholic/birth",
-          "subitems": [
-            {
-              "title" : "One",
-              "link" : "/home"
-            }
-          ]
         },
         {
           "title": "Marriage",
@@ -44,7 +40,7 @@ export class HeaderComponent implements OnInit {
       ]
     },
     {
-      "title": "Ortodox",
+      "title": "Orthodox metrics",
       "link" : "#",
       "subItems" : [
 
@@ -52,34 +48,121 @@ export class HeaderComponent implements OnInit {
     }
   ];
 
-  constructor(private route: ActivatedRoute, private router: Router, private translate: TranslateService) {
-    //this.route.params.subscribe(res => console.log(res.id));
-   }
+  private menuRus: any[] = [
+    {
+      "title": "Католические метрики",
+      "link" : "#",
+      "subItems" : [
+        {
+          "title": "О родившихся",
+          "link" : "/catholic/birth",
+        },
+        {
+          "title": "О бракосочетавшихся",
+          "link" : "/catholic/marriage"
+        },
+        {
+          "title": "Об умерших",
+          "link" : "/catholic/death"
+        }
+      ]
+    },
+    {
+      "title": "Православные метрики",
+      "link" : "#",
+      "subItems" : [
+
+      ]
+    }
+  ];
+
+  private menuBel: any[] = [
+    {
+      "title": "Каталіцкія метрыкі",
+      "link" : "#",
+      "subItems" : [
+        {
+          "title": "Аб нарадзiўшыхся",
+          "link" : "/catholic/birth",
+        },
+        {
+          "title": "Аб шлюбах",
+          "link" : "/catholic/marriage"
+        },
+        {
+          "title": "Аб памерлых",
+          "link" : "/catholic/death"
+        }
+      ]
+    },
+    {
+      "title": "Праваслаўныя метрыкі",
+      "link" : "#",
+      "subItems" : [
+
+      ]
+    }
+  ];
+
+  constructor (private route: ActivatedRoute, private router: Router, private translate: TranslateService) {
+    this.translate.onLangChange
+      .subscribe((event: LangChangeEvent) => {
+          this.highlightCurentLangBtn(this.translate.currentLang);
+          this.switchMenuLang(this.translate.currentLang);
+      });
+  }
+
+  ngOnDestroy() {
+    this.translate.onLangChange.unsubscribe();
+  }
 
   ngOnInit() {
+    let currLang = this.translate.defaultLang;
+    this.highlightCurentLangBtn(currLang);
+    this.switchMenuLang(currLang);
+  }
+
+  private switchMenuLang(lang: string): void {
+    if (lang === 'en') {
+      this.menuItems = this.menuEng;
+    } else if (lang === 'ru') {
+      this.menuItems = this.menuRus;
+    } else if (lang === 'be') {
+      this.menuItems = this.menuBel;
+    } else {
+      throw new Error("Unsupported lang");
+    }
+  }
+
+  private highlightCurentLangBtn(lang: string) : void {
+    this.removeHighlightCurrentLangBtn();
+    Array.from(document.querySelectorAll('.i18n-button')).forEach(element => {
+      if (element.getAttribute('name') === lang) {
+        element.classList.add('current');
+      }
+    });
+  }
+
+  private removeHighlightCurrentLangBtn(): void {
+    Array.from(document.querySelectorAll('.current')).forEach(element => {
+      element.classList.remove('current');
+    });
   }
 
   public onMenuClose(){
-    console.log("menu closed");
     this.switchUntouchedClass('content-container');
   }
   public onMenuOpen(){
     this.switchUntouchedClass('content-container');
-    console.log("menu closed");
   }
-  private onItemSelect(item:any){
+  private onItemSelect(item: any){
     this.switchUntouchedClass('content-container');
     this.router.navigate([item.link]);
-    console.log(item);
   }
-
 
   private switchUntouchedClass(elemName: string):void {
     let formElem = document.getElementsByClassName(elemName)[0];
-    formElem.classList.contains('untouched') ? formElem.classList.remove('untouched') : formElem.classList.add('untouched');
-  }
-
-  public switchLanguage (lang: string) {  
-    this.translate.use(lang); 
+    let classList =  formElem.classList;
+    classList.contains('untouched') ? classList.remove('untouched') : classList.add('untouched');
   }
 }

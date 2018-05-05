@@ -121,11 +121,11 @@
                          formControlName="lastName"></ng-select>
               <ng-select [items]="classOfMale"
                          [addTag]="true"
-                         placeholder="Class of daddy"
+                         placeholder="{{'add.catholic.birth.father.class' | translate}}"
                          multiple="true"
                          maxSelectedItems="1"
                          formControlName="class"></ng-select>
-              <input type="text" class="ext-input" placeholder="Additional info" formControlName="ext">
+              <input type="text" class="ext-input" placeholder="{{'add.catholic.birth.father.ext' | translate}}" formControlName="ext">
             </fieldset>
       
             <fieldset formGroupName="mommy" class="mommy-set">
@@ -150,15 +150,15 @@
                          formControlName="lastName"></ng-select>
               <ng-select [items]="classOfFemale"
                          [addTag]="true"
-                         placeholder="Class of mommy"
+                         placeholder="{{'add.catholic.birth.mother.class' | translate}}"
                          multiple="true"
                          maxSelectedItems="1"
                          formControlName="class"></ng-select>  
-              <input type="checkbox" formControlName="soldierWife"> Is soldier's wife
+              <input type="checkbox" formControlName="soldierWife"> {{'add.catholic.birth.mother.soldiers' | translate}}
               <br>
-              <input type="checkbox" formControlName="widow"> Is widow
+              <input type="checkbox" formControlName="widow"> {{'add.catholic.birth.mother.widow' | translate}}
               <br>
-              <input type="checkbox" formControlName="maiden"> Is maiden
+              <input type="checkbox" formControlName="maiden"> {{'add.catholic.birth.mother.maiden' | translate}}
             </fieldset>      
       </div>
       
@@ -185,11 +185,11 @@
                           formControlName="lastName"></ng-select>
               <ng-select [items]="classOfMale"
                           [addTag]="true"
-                          placeholder="Class of father"
+                          placeholder="{{'add.catholic.birth.godfather.class' | translate}}"
                           multiple="true"
                           maxSelectedItems="1"
                           formControlName="class"></ng-select>
-              <input type="text" class="ext-input" placeholder="Additional info" formControlName="ext">
+              <input type="text" class="ext-input" placeholder="{{'add.catholic.birth.godfather.ext' | translate}}" formControlName="ext">
             </fieldset>
       
             <fieldset formGroupName="godmother" class="godmother-set">
@@ -214,7 +214,7 @@
                          formControlName="husbandName"></ng-select>
               <ng-select [items]="classOfFemale"
                          [addTag]="true"
-                         placeholder="Class of godmother"
+                         placeholder="{{'add.catholic.birth.godmother.class' | translate}}"
                          multiple="true"
                          maxSelectedItems="1"
                          formControlName="class"></ng-select>
